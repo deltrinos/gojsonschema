@@ -679,6 +679,17 @@ func (d *Schema) parseSchema(documentNode interface{}, currentSchema *subSchema)
 		currentSchema.format = formatString
 	}
 
+	if existsMapKey(m, KEY_EXTRACT) {
+		formatString, ok := m[KEY_EXTRACT].(string)
+		if !ok {
+			return errors.New(formatErrorDescription(
+				Locale.MustBeOfType(),
+				ErrorDetails{"key": KEY_EXTRACT, "type": TYPE_STRING},
+			))
+		}
+		currentSchema.extract = formatString
+	}
+
 	// validation : object
 
 	if existsMapKey(m, KEY_MIN_PROPERTIES) {

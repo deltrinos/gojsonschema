@@ -452,6 +452,11 @@ func (v *subSchema) validateCommon(currentSubSchema *subSchema, value interface{
 		}
 	}
 
+	// extract
+	if currentSubSchema.extract != "" {
+		result.AddExtract(currentSubSchema.extract, value)
+	}
+
 	result.incrementScore()
 }
 

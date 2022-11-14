@@ -86,6 +86,9 @@ type (
 		// Scores how well the validation matched. Useful in generating
 		// better error messages for anyOf and oneOf.
 		score int
+
+		// extraction map
+		Extracts map[string]interface{}
 	}
 )
 
@@ -217,4 +220,11 @@ func (v *Result) mergeErrors(otherResult *Result) {
 
 func (v *Result) incrementScore() {
 	v.score++
+}
+
+func (v *Result) AddExtract(key string, value interface{}) {
+	if v.Extracts == nil {
+		v.Extracts = make(map[string]interface{})
+	}
+	v.Extracts[key] = value
 }

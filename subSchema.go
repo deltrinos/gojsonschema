@@ -27,9 +27,10 @@
 package gojsonschema
 
 import (
-	"github.com/xeipuuv/gojsonreference"
 	"math/big"
 	"regexp"
+
+	"github.com/xeipuuv/gojsonreference"
 )
 
 // Constants
@@ -57,6 +58,7 @@ const (
 	KEY_MAX_LENGTH            = "maxLength"
 	KEY_PATTERN               = "pattern"
 	KEY_FORMAT                = "format"
+	KEY_EXTRACT               = "extract"
 	KEY_MIN_PROPERTIES        = "minProperties"
 	KEY_MAX_PROPERTIES        = "maxProperties"
 	KEY_DEPENDENCIES          = "dependencies"
@@ -115,6 +117,7 @@ type subSchema struct {
 	maxLength *int
 	pattern   *regexp.Regexp
 	format    string
+	extract   string
 
 	// validation : object
 	minProperties *int
